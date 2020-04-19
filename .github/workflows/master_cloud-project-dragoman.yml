@@ -22,8 +22,8 @@ jobs:
 
     - name: Install Python dependencies
       run: |
-        py -3 -m venv .env
-        .env\scripts\activate
+        python3 -m venv env
+        source env/bin/activate
         pip install -r requirements.txt
     - name: Zip the application files
       run: zip -r myapp.zip .
@@ -34,4 +34,4 @@ jobs:
         app-name: 'cloud-project-dragoman'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_bc0af18fe0564ede93399fa621a11da0 }}
-        package: './myapp.zip'
+        package: './myapp.zip' 
