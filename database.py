@@ -9,6 +9,8 @@ config = {
   'database':'cloudcomputing'
 }
 
+is_connected = False
+
 # Construct connection string
 try:
    conn = mysql.connector.connect(**config)
@@ -21,28 +23,32 @@ except mysql.connector.Error as err:
   else:
     print(err)
 else:
+  is_connected = True
   cursor = conn.cursor()
 
-  # Drop previous table of same name if one exists
-  cursor.execute("DROP TABLE IF EXISTS inventory;")
-  print("Finished dropping table (if existed).")
 
-  # Create table
-  cursor.execute("CREATE TABLE inventory (id serial PRIMARY KEY, name VARCHAR(50), quantity INTEGER);")
-  print("Finished creating table.")
-
-  # Insert some data into table
-  cursor.execute("INSERT INTO inventory (name, quantity) VALUES (%s, %s);", ("banana", 150))
-  print("Inserted",cursor.rowcount,"row(s) of data.")
-  cursor.execute("INSERT INTO inventory (name, quantity) VALUES (%s, %s);", ("orange", 154))
-  print("Inserted",cursor.rowcount,"row(s) of data.")
-  cursor.execute("INSERT INTO inventory (name, quantity) VALUES (%s, %s);", ("apple", 100))
-  print("Inserted",cursor.rowcount,"row(s) of data.")
-
-  # Cleanup
-  conn.commit()
-  cursor.close()
-  conn.close()
-  print("Done.")
+def createTables():
+  if is_connected == True:
+    cursor.execute("DROP TABLE IF EXISTS inventory;")
+    cursor.execute("CREATE TABLE inventory (id serial PRIMARY KEY, name VARCHAR(50), quantity INTEGER);")
+    return True
+  else:
+    return False
   
 
+def insertInInventory(item_name, item_quantity):
+  if is_connected == True:
+    cursor.execute("INSERT INTO inventory (name, quantity) VALUES (%s, %s);", (item_name, item_quantity))
+    conn.commit()
+    return True
+  else:
+    return False
+  
+def getInventory():
+  if is_connected == True:
+    cursor.execute("SELECT * FROM inventory;")
+    rows = cursor.fetchall()
+    return rows
+  else:
+    return null
+  
