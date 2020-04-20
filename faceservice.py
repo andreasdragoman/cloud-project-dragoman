@@ -20,4 +20,4 @@ def getFacesInfoFromURL():
   global KEY
   global ENDPOINT
   # face_client = FaceClient(ENDPOINT, CognitiveServicesCredentials(KEY))
-  return KEY
+  return 'kk'
