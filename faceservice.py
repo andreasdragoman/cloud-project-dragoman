@@ -30,4 +30,4 @@ def getFaceInfoFromURL():
   
   response = requests.post(face_api_url, params=params,
                            headers=headers, json={"url": image_url})
-  print(json.dumps(response.json()))
+  return json.dumps(response.json())
