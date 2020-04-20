@@ -16,7 +16,7 @@ from msrest.authentication import CognitiveServicesCredentials
 KEY = 'bb170de71ae24dfa8f17d2a472215bfe' # os.environ['FACE_SUBSCRIPTION_KEY']
 ENDPOINT = 'https://cloud-project-face-service.cognitiveservices.azure.com/' # os.environ['FACE_ENDPOINT']
 
-face_client = FaceClient(ENDPOINT, CognitiveServicesCredentials(KEY))
+# face_client = FaceClient(ENDPOINT, CognitiveServicesCredentials(KEY))
 
 # # Detect a face in an image that contains a single face
 # single_face_image_url = 'https://www.biography.com/.image/t_share/MTQ1MzAyNzYzOTgxNTE0NTEz/john-f-kennedy---mini-biography.jpg'
