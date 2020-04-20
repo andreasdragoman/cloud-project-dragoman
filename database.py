@@ -58,7 +58,12 @@ def insertItemInInventory(item_name, item_quantity):
   
   
 def getInventory():
-  global config
+  config = {
+    'host':'cloud-project-serverdb.mysql.database.azure.com',
+    'user':'DragomanDbUser@cloud-project-serverdb',
+    'password':'Portocale1',
+    'database':'cloudcomputing'
+  } 
   try:
     conn = mysql.connector.connect(**config)
   except mysql.connector.Error as err:
