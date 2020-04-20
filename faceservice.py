@@ -13,8 +13,8 @@ from azure.cognitiveservices.vision.face import FaceClient
 from msrest.authentication import CognitiveServicesCredentials
 # from azure.cognitiveservices.vision.face.models import TrainingStatusType, Person, SnapshotObjectType, OperationStatusType
 
-KEY = os.environ['FACE_SUBSCRIPTION_KEY'] # "bb170de71ae24dfa8f17d2a472215bfe"
-ENDPOINT = os.environ['FACE_ENDPOINT'] # "https://cloud-project-face-service.cognitiveservices.azure.com/"
+KEY = 'bb170de71ae24dfa8f17d2a472215bfe'
+ENDPOINT = 'https://cloud-project-face-service.cognitiveservices.azure.com/'
 
 def getFaceInfoFromURL():
   return KEY
