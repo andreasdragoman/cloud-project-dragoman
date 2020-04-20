@@ -13,5 +13,5 @@ from azure.cognitiveservices.vision.face import FaceClient
 from msrest.authentication import CognitiveServicesCredentials
 # from azure.cognitiveservices.vision.face.models import TrainingStatusType, Person, SnapshotObjectType, OperationStatusType
 
-KEY = os.environ['FACE_SUBSCRIPTION_KEY']
-ENDPOINT = os.environ['FACE_ENDPOINT']
+KEY_Val = os.environ['FACE_SUBSCRIPTION_KEY']
+ENDPOINT_Val = os.environ['FACE_ENDPOINT']
