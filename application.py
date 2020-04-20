@@ -1,4 +1,5 @@
-import database as db
+import mysql.connector
+from mysql.connector import errorcode
 
 from flask import Flask
 app = Flask(__name__)
