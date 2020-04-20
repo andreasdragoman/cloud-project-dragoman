@@ -9,4 +9,4 @@ app = Flask(__name__)
 def hello():
     results = db.getInventory()
     # return str(results[0])
-    return fs.getFacesInfoFromURL()
+    return str(fs.getFacesInfoFromURL())
