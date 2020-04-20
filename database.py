@@ -50,6 +50,7 @@ def insertItemInInventory(item_name, item_quantity):
   except mysql.connector.Error as err:
     return False
   else:
+    cursor = conn.cursor()
     cursor.execute("INSERT INTO inventory (name, quantity) VALUES (%s, %s);", (item_name, item_quantity))
     conn.commit()
     cursor.close()
@@ -62,8 +63,9 @@ def getInventory():
   try:
     conn = mysql.connector.connect(**config)
   except mysql.connector.Error as err:
-    return null
+    return None
   else:
+    cursor = conn.cursor()
     cursor.execute("SELECT * FROM inventory;")
     rows = cursor.fetchall()
     conn.commit()
@@ -79,6 +81,7 @@ def updateInventoryItem(item_id, item_name, item_quantity):
   except mysql.connector.Error as err:
     return False
   else:
+    cursor = conn.cursor()
     cursor.execute("UPDATE inventory SET name = %s, quantity = %s WHERE id = %d;", (item_name, item_quantity, item_id))
     conn.commit()
     cursor.close()
@@ -93,6 +96,7 @@ def deleteInventoryItem(item_id):
   except mysql.connector.Error as err:
     return False
   else:
+    cursor = conn.cursor()
     cursor.execute("DELETE FROM inventory WHERE id=%d;", (item_id))
     conn.commit()
     cursor.close()
