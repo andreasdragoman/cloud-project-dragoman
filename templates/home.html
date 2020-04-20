@@ -43,6 +43,20 @@
 
 <main style="min-height: calc(100vh - 110px); display: inline-block; width: 100%;">
     Home!
+    
+     <div>
+         <label for="target-language-picker">Select your language</label>
+         <select name="language-picker-select" id="target-language-picker" style="width:100px;">
+             <option lang="de" value="ro" selected>Romanian</option>
+             <option lang="en" value="english">English</option>
+             <option lang="fr" value="fr">French</option>
+             <option lang="it" value="it">Italian</option>
+         </select>
+     </div>
+    <div>
+        <button id="translateBtn" class="btn green" style="width:150px;">Translate</button>
+    </div>
+    
 </main>
 
 <footer class="page-footer font-small green pt-4" style="height:110px;">
