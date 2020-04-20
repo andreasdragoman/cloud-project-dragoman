@@ -7,5 +7,5 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    results = db.getInventory()
-    return str(results[0])
+  results = db.getInventory()
+  return str(results[0])
