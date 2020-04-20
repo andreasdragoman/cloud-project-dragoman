@@ -28,6 +28,7 @@ config = {
 
 
 def createTables():
+  global config
   try:
     conn = mysql.connector.connect(**config)
   except mysql.connector.Error as err:
@@ -36,21 +37,28 @@ def createTables():
     cursor = conn.cursor()
     cursor.execute("DROP TABLE IF EXISTS inventory;")
     cursor.execute("CREATE TABLE inventory (id serial PRIMARY KEY, name VARCHAR(50), quantity INTEGER);")
-    cleanUpConnection()
+    conn.commit()
+    cursor.close()
+    conn.close()
     return True
   
 
 def insertItemInInventory(item_name, item_quantity):
+  global config
   try:
     conn = mysql.connector.connect(**config)
   except mysql.connector.Error as err:
     return False
   else:
     cursor.execute("INSERT INTO inventory (name, quantity) VALUES (%s, %s);", (item_name, item_quantity))
-    cleanUpConnection()
+    conn.commit()
+    cursor.close()
+    conn.close()
+    return True
   
   
 def getInventory():
+  global config
   try:
     conn = mysql.connector.connect(**config)
   except mysql.connector.Error as err:
@@ -58,34 +66,36 @@ def getInventory():
   else:
     cursor.execute("SELECT * FROM inventory;")
     rows = cursor.fetchall()
-    cleanUpConnection()
+    conn.commit()
+    cursor.close()
+    conn.close()
     return rows
   
   
 def updateInventoryItem(item_id, item_name, item_quantity):
+  global config
   try:
     conn = mysql.connector.connect(**config)
   except mysql.connector.Error as err:
     return False
   else:
     cursor.execute("UPDATE inventory SET name = %s, quantity = %s WHERE id = %d;", (item_name, item_quantity, item_id))
-    cleanUpConnection()
+    conn.commit()
+    cursor.close()
+    conn.close()
     return True
   
   
 def deleteInventoryItem(item_id):
+  global config
   try:
     conn = mysql.connector.connect(**config)
   except mysql.connector.Error as err:
     return False
   else:
     cursor.execute("DELETE FROM inventory WHERE id=%d;", (item_id))
-    cleanUpConnection()
+    conn.commit()
+    cursor.close()
+    conn.close()
     return True
-  
-  
-def cleanUpConnection():
-  conn.commit()
-  cursor.close()
-  conn.close()
   
