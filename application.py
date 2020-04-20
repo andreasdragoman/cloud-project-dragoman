@@ -6,4 +6,5 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
+    db.getTestRecords();
     return "Hello World!"
