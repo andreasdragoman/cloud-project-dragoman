@@ -10,5 +10,5 @@ def hello():
   results = db.getInventory()
   #return str(results[0])
   results = fs.getFaceInfoFromURL()
-  if results != None:
+  if results is not None:
     return str(results[0])
