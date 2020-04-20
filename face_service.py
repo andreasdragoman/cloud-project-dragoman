@@ -13,8 +13,8 @@ from azure.cognitiveservices.vision.face import FaceClient
 from msrest.authentication import CognitiveServicesCredentials
 # from azure.cognitiveservices.vision.face.models import TrainingStatusType, Person, SnapshotObjectType, OperationStatusType
 
-KEY = 'bb170de71ae24dfa8f17d2a472215bfe' # os.environ['FACE_SUBSCRIPTION_KEY']
-ENDPOINT = 'https://cloud-project-face-service.cognitiveservices.azure.com/' # os.environ['FACE_ENDPOINT']
+# KEY = 'bb170de71ae24dfa8f17d2a472215bfe' # os.environ['FACE_SUBSCRIPTION_KEY']
+# ENDPOINT = 'https://cloud-project-face-service.cognitiveservices.azure.com/' # os.environ['FACE_ENDPOINT']
 
 # face_client = FaceClient(ENDPOINT, CognitiveServicesCredentials(KEY))
 
