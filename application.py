@@ -9,4 +9,6 @@ app = Flask(__name__)
 def hello():
   results = db.getInventory()
   #return str(results[0])
-  return str(fs.getFaceInfoFromURL())
+  results = fs.getFaceInfoFromURL()
+  if results != None:
+    return str(results[0])
