@@ -8,3 +8,4 @@ app = Flask(__name__)
 def hello():
     records = db.getTestRecords();
     return str(records[0])
+
