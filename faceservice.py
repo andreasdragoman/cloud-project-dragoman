@@ -24,5 +24,5 @@ def getFaceInfoFromURL():
   single_image_name = os.path.basename(single_face_image_url)
   detected_faces = face_client.face.detect_with_url(url=single_face_image_url)
   if not detected_faces:
-    return None
+    return 'NOPE'
   return detected_faces
