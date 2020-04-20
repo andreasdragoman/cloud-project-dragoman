@@ -11,4 +11,4 @@ def hello():
   #return str(results[0])
   results = fs.getFaceInfoFromURL()
   if results is not None:
-    return str(results[0])
+    return str(results)
