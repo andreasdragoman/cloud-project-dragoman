@@ -5,19 +5,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
 
-# Configure Database URI: 
-params = urllib.parse.quote_plus("DRIVER={SQL Server};SERVER=sqlhost.database.windows.net;DATABASE=pythonSQL;UID=username@sqldb;PWD=password56789")
-
-
-# initialization
-app = Flask(__name__)
-app.config['SECRET_KEY'] = 'supersecret'
-app.config['SQLALCHEMY_DATABASE_URI'] = "mssql+pyodbc:///?odbc_connect=%s" % params
-app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
-
-
-# extensions
-db = SQLAlchemy(app)
+db = mysql.connector.connect(user="DragomanDbUser@cloud-project-serverdb", password={Portocale1}, host="cloud-project-serverdb.mysql.database.azure.com", port=3306, database={cloudcomputing})
 
 
 def create_table_translations():
