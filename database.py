@@ -54,3 +54,11 @@ def getInventory():
   else:
     return null
   
+def updateInventoryItem(item_id, item_name, item_quantity):
+  if is_connected == True:
+    cursor.execute("UPDATE inventory SET name = %s, quantity = %s WHERE id = %d;", (item_name, item_quantity, item_id))
+    conn.commit()
+    return True
+  else:
+    return False
+  
