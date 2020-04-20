@@ -46,10 +46,9 @@ else:
   print("Done.")
   
   
-  def getTestRecords():
-    # Read data
-    cursor.execute("SELECT * FROM test;")
-    rows = cursor.fetchall()
-    return rows
-  
+def getTestRecords():
+  # Read data
+  cursor.execute("SELECT * FROM test;")
+  rows = cursor.fetchall()
+  return rows
   
