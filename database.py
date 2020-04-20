@@ -54,7 +54,3 @@ def getInventory():
   else:
     return null
   
-
-
-  
-  
