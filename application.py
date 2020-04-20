@@ -8,6 +8,7 @@ conn = mysql.connector.connect(user='DragomanDbUser@cloud-project-serverdb',
 except mysql.connector.Error as err:
     print(err)
 
+
 @app.route("/")
 def hello():
     return "Hello World!"
