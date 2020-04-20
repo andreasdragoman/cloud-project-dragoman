@@ -1,59 +1,46 @@
-import datetime
-import os
-import urllib.parse 
-from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
+import mysql.connector
+from mysql.connector import errorcode
 
+# Obtain connection string information from the portal
+config = {
+  'host':'<mydemoserver>.mysql.database.azure.com',
+  'user':'<myadmin>@<mydemoserver>',
+  'password':'<mypassword>',
+  'database':'<mydatabase>'
+}
 
-db = mysql.connector.connect(user="DragomanDbUser@cloud-project-serverdb", password={Portocale1}, host="cloud-project-serverdb.mysql.database.azure.com", port=3306, database={cloudcomputing})
+# Construct connection string
+try:
+   conn = mysql.connector.connect(**config)
+   print("Connection established")
+except mysql.connector.Error as err:
+  if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
+    print("Something is wrong with the user name or password")
+  elif err.errno == errorcode.ER_BAD_DB_ERROR:
+    print("Database does not exist")
+  else:
+    print(err)
+else:
+  cursor = conn.cursor()
 
+  # Drop previous table of same name if one exists
+  cursor.execute("DROP TABLE IF EXISTS inventory;")
+  print("Finished dropping table (if existed).")
 
-def create_table_translations():
-    with db.connect() as conn:
-        conn.execute(
-            "CREATE TABLE IF NOT EXISTS translations "
-            "( id SERIAL NOT NULL PRIMARY KEY,"
-            "  time_cast timestamp NOT NULL, "
-            "  initial_language TEXT NOT NULL, "
-            "  target_language TEXT NOT NULL, "
-            "  initial_text TEXT,"
-            "  translated_text TEXT"
-            "  );"
-        )
+  # Create table
+  cursor.execute("CREATE TABLE inventory (id serial PRIMARY KEY, name VARCHAR(50), quantity INTEGER);")
+  print("Finished creating table.")
 
+  # Insert some data into table
+  cursor.execute("INSERT INTO inventory (name, quantity) VALUES (%s, %s);", ("banana", 150))
+  print("Inserted",cursor.rowcount,"row(s) of data.")
+  cursor.execute("INSERT INTO inventory (name, quantity) VALUES (%s, %s);", ("orange", 154))
+  print("Inserted",cursor.rowcount,"row(s) of data.")
+  cursor.execute("INSERT INTO inventory (name, quantity) VALUES (%s, %s);", ("apple", 100))
+  print("Inserted",cursor.rowcount,"row(s) of data.")
 
-def get_all_translations():
-    translations = []
-    with db.connect() as conn:
-        translations_db = conn.execute(
-            "SELECT id, time_cast, initial_language, target_language, initial_text, translated_text "
-            "FROM translations "
-            "ORDER BY time_cast"
-        ).fetchall()
-        for row in translations_db:
-            translations.append({"id": row[0],
-                                 "time_cast": row[1],
-                                 "initial_language": row[2],
-                                 "target_language": row[3],
-                                 "initial_text": row[4],
-                                 "translated_text": row[5]})
-    return translations
-
-
-def insert_translation(initial_language, target_language, initial_text, translated_text):
-    time_cast = datetime.datetime.utcnow()
-    stmt = sqlalchemy.text(
-        "INSERT INTO translations (time_cast, initial_language, target_language, initial_text, translated_text)" 
-        " VALUES (:time_cast, :initial_language, :target_language, :initial_text, :translated_text)")
-    try:
-        with db.connect() as conn:
-            conn.execute(stmt, time_cast=time_cast,
-                         initial_language=initial_language,
-                         target_language=target_language,
-                         initial_text=initial_text,
-                         translated_text=translated_text)
-    except Exception as e:
-        logger.exception(e)
-        return False
-    return True
-
+  # Cleanup
+  conn.commit()
+  cursor.close()
+  conn.close()
+  print("Done.")
