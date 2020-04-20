@@ -1,4 +1,4 @@
 test = 'test'
 
 def getVar():
-  return test
+  return 'test1'
