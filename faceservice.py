@@ -6,6 +6,7 @@ KEY = 'bb170de71ae24dfa8f17d2a472215bfe'
 ENDPOINT = 'https://cloud-project-face-service.cognitiveservices.azure.com/'
 
 def getFaceInfoFromURL():
+  subscription_key = 'bb170de71ae24dfa8f17d2a472215bfe'
   # face_detected = False
   # url = 'https://www.biography.com/.image/t_share/MTQ1MzAyNzYzOTgxNTE0NTEz/john-f-kennedy---mini-biography.jpg'
   # face_client = FaceClient(ENDPOINT, CognitiveServicesCredentials(KEY))
