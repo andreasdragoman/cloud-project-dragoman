@@ -1,4 +1,6 @@
 import os
+import requests
+import json
 from azure.cognitiveservices.vision.face import FaceClient
 from msrest.authentication import CognitiveServicesCredentials
 
