@@ -7,5 +7,6 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
+    testt = 'ww'
     results = db.getInventory()
     return str(results[0])
