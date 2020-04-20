@@ -1,11 +1,23 @@
 import datetime
 import os
-from flask import Flask, render_template, request, Response
-import sqlalchemy
+import urllib.parse 
+from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
 
-db = 
 
-logger = logging.getLogger()
+# Configure Database URI: 
+params = urllib.parse.quote_plus("DRIVER={SQL Server};SERVER=sqlhost.database.windows.net;DATABASE=pythonSQL;UID=username@sqldb;PWD=password56789")
+
+
+# initialization
+app = Flask(__name__)
+app.config['SECRET_KEY'] = 'supersecret'
+app.config['SQLALCHEMY_DATABASE_URI'] = "mssql+pyodbc:///?odbc_connect=%s" % params
+app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
+
+
+# extensions
+db = SQLAlchemy(app)
 
 
 def create_table_translations():
