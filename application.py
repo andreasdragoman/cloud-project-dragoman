@@ -1,4 +1,5 @@
 import database as db
+import faceservice as fs
 
 from flask import Flask
 app = Flask(__name__)
