@@ -1,3 +1,5 @@
+import db_controller as db
+
 from flask import Flask
 app = Flask(__name__)
 
