@@ -31,18 +31,20 @@ def createTables():
   if is_connected == True:
     cursor.execute("DROP TABLE IF EXISTS inventory;")
     cursor.execute("CREATE TABLE inventory (id serial PRIMARY KEY, name VARCHAR(50), quantity INTEGER);")
+    conn.commit()
     return True
   else:
     return False
   
 
-def insertInInventory(item_name, item_quantity):
+def insertItemInInventory(item_name, item_quantity):
   if is_connected == True:
     cursor.execute("INSERT INTO inventory (name, quantity) VALUES (%s, %s);", (item_name, item_quantity))
     conn.commit()
     return True
   else:
     return False
+  
   
 def getInventory():
   if is_connected == True:
@@ -51,4 +53,29 @@ def getInventory():
     return rows
   else:
     return null
+  
+
+def updateInventoryItem(item_id, item_name, item_quantity):
+  if is_connected == True:
+    cursor.execute("UPDATE inventory SET name = %s, quantity = %s WHERE id = %d;", (item_name, item_quantity, item_id))
+    conn.commit()
+    return True
+  else:
+    return False
+  
+  
+def deleteInventoryItem(item_id):
+  if is_connected == True:
+    cursor.execute("DELETE FROM inventory WHERE id=%(param1)d;", {'param1':item_id})
+    conn.commit()
+    return True
+  else:
+    return False
+    
+   
+def cleanUpConnection():
+  conn.commit()
+  cursor.close()
+  conn.close()
+  
   
