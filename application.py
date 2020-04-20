@@ -6,14 +6,21 @@ app = Flask(__name__)
 
 
 @app.route("/", methods=['GET', 'POST'])
-def hello():
+def index():
   if request.method == 'GET':
     return render_template("home.html")
-  if request.method == 'POST':
-    data = request.form
-    results = db.getInventory()
-    #return str(results[0])
-    results = fs.getFaceInfoFromURL()
-    # if results is not None:
-    #   return str(results)
-    return render_template("home.html", imageFaceInfoResult=results)
+  # if request.method == 'POST':
+  #   data = request.form
+  #   results = db.getInventory()
+  #   #return str(results[0])
+  #   results = fs.getFaceInfoFromURL()
+  #   # if results is not None:
+  #   #   return str(results)
+  #   return render_template("home.html", imageFaceInfoResult=results)
+  
+  
+app.route('/getImageInfoFromURL', methods=['GET','POST'])
+def getImageInfoFromURL():
+  data = request.form
+  # results = fs.getFaceInfoFromURL()
+  return fs.getFaceInfoFromURL()
