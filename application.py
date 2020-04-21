@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 
 @app.before_first_request
-def create_table_translations():
+def create_tables():
     db.createTables()
     
 
