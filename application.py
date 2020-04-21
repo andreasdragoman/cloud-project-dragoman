@@ -5,6 +5,11 @@ from flask import Flask, render_template, request, Response, jsonify
 app = Flask(__name__)
 
 
+@app.before_first_request
+def create_table_translations():
+    db.createTables()
+    
+
 @app.route("/", methods=['GET', 'POST'])
 def index():
   if request.method == 'GET':
@@ -21,7 +26,9 @@ def index():
   
 @app.route('/getImageInfoFromURL', methods=['POST'])
 def getImageInfoFromURL():
+  if data['imgUrl']
   data = request.form
   results = fs.getFaceInfoFromURL(data['imgUrl'])
+  db.insertInFacesDetectedInfo(str(data['imgUrl']), str(results))
   # return fs.getFaceInfoFromURL()
   return results
