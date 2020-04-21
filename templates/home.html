@@ -64,7 +64,7 @@
         </div>
     
     
-    <div class="show-data" >
+    <div class="show-data" style="padding:10px;">
         
     </div>
     
@@ -78,20 +78,19 @@
     $('select').select2({ width: '170px', placeholder: "Select an Option", allowClear: true });
     
     function myFunction() {
-          //$.ajax({
-          //    url: "/getImageInfoFromURL",
-          //    type: "POST",
-          //    data: {}
-          //}).done(function(response) {
-          //      var html= "<br><br><br><p> <b> RESULT : <b><p>";
-                // response = response.result;
-                // $.each(response,function(key,val){
-                //      console.log(val);
-                //         html+="<p>"+val+"<p>"
-                //     });
-                //     html +="<br>";
-                $(".show-data").append("place for info");
-            //});
+          $.ajax({
+              url: "/getImageInfoFromURL",
+              type: "POST"
+          }).done(function(response) {
+              var html= "<br><p> <b> RESULT : <b><p>";
+              // response = response.result;
+              // $.each(response,function(key,val){
+              //      console.log(val);
+              //         html+="<p>"+val+"<p>"
+              //     });
+              //     html +="<br>";
+              $(".show-data").append(html + "<p>place for info</p>");
+          //});
     }
     
 </script>
