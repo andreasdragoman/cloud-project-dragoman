@@ -5,11 +5,6 @@ from flask import Flask, render_template, request, Response, jsonify
 app = Flask(__name__)
 
 
-@app.before_first_request
-def create_tables():
-    # db.createTables()
-    
-
 @app.route("/", methods=['GET', 'POST'])
 def index():
   if request.method == 'GET':
