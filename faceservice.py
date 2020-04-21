@@ -7,7 +7,7 @@ from msrest.authentication import CognitiveServicesCredentials
 KEY = 'bb170de71ae24dfa8f17d2a472215bfe'
 ENDPOINT = 'https://cloud-project-face-service.cognitiveservices.azure.com/'
 
-def getFaceInfoFromURL():
+def getFaceInfoFromURL(urlImg):
   subscription_key = 'bb170de71ae24dfa8f17d2a472215bfe'
   # face_detected = False
   # url = 'https://www.biography.com/.image/t_share/MTQ1MzAyNzYzOTgxNTE0NTEz/john-f-kennedy---mini-biography.jpg'
@@ -21,7 +21,7 @@ def getFaceInfoFromURL():
   # replace <My Endpoint String> with the string from your endpoint URL
   face_api_url = 'https://cloud-project-face-service.cognitiveservices.azure.com/face/v1.0/detect'
   
-  image_url = 'https://upload.wikimedia.org/wikipedia/commons/3/37/Dagestani_man_and_woman.jpg'
+  image_url = urlImg # 'https://upload.wikimedia.org/wikipedia/commons/3/37/Dagestani_man_and_woman.jpg'
   
   headers = {'Ocp-Apim-Subscription-Key': subscription_key}
   
