@@ -87,7 +87,7 @@ def deleteInventoryItem(item_id):
     return True
   
   
-def insertInFacesDetectedInfo(item_url, item_result, item_result_translated):
+def insertInFacesDetectedInfo(item_url, item_response, item_response_translated):
   global config
   try:
     conn = mysql.connector.connect(**config)
@@ -95,7 +95,7 @@ def insertInFacesDetectedInfo(item_url, item_result, item_result_translated):
     return False
   else:
     cursor = conn.cursor()
-    cursor.execute("INSERT INTO FacesDetectedInfo (url, result, resultTranslated) VALUES (%s, %s, %s);", (item_url, item_result, item_result_translated))
+    cursor.execute("INSERT INTO FacesDetectedInfo (url, response, responseTranslated) VALUES (%s, %s, %s);", (item_url, item_response, item_response_translated))
     conn.commit()
     cursor.close()
     conn.close()
