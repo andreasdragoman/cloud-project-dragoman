@@ -65,7 +65,7 @@
     
     
     <div class="show-data" style="padding:10px;">
-        
+        <pre id="jsonResultInfoFaceImg"></pre>
     </div>
     
 </main>
@@ -85,15 +85,16 @@
             data:{imgUrl:urlstr, targetLanguage:target_language},
             type: "POST"
         }).done(function(response) {
-            var html= "<br><p> <b> RESULT : <b><p>";
+            //var html= "<br><p> <b> RESULT : <b><p>";
             // response = response.result;
             // $.each(response,function(key,val){
             //      console.log(val);
             //         html+="<p>"+val+"<p>"
             //     });
             //     html +="<br>";
-            alert(response);
-            $(".show-data").append(html + "<p>" + response + "</p>");
+            //alert(response);
+            //$(".show-data").append(html + "<p>" + response + "</p>");
+            document.getElementById("jsonResultInfoFaceImg").textContent = JSON.stringify(response, undefined, 2);
         });
     }
     
