@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 @app.before_first_request
 def create_tables():
-    db.createTables()
+    # db.createTables()
     
 
 @app.route("/", methods=['GET', 'POST'])
