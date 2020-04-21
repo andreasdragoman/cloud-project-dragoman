@@ -87,15 +87,6 @@
             data:{imgUrl:urlstr, targetLanguage:target_language},
             type: "POST"
         }).done(function(response) {
-            //var html= "<br><p> <b> RESULT : <b><p>";
-            // response = response.result;
-            // $.each(response,function(key,val){
-            //      console.log(val);
-            //         html+="<p>"+val+"<p>"
-            //     });
-            //     html +="<br>";
-            //alert(response);
-            //$(".show-data").append(html + "<p>" + response + "</p>");
             var responseJson = JSON.parse(response);
             document.getElementById("jsonResultInfoFaceImg").textContent = JSON.stringify(responseJson, undefined, 2);
         });
