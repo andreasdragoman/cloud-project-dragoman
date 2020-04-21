@@ -65,7 +65,7 @@
     
     
     <div class="show-data" style="padding:10px;">
-        
+        <pre id="jsonResultInfoFaceImg"></pre>
     </div>
     
 </main>
@@ -94,7 +94,7 @@
             //     html +="<br>";
             //alert(response);
             //$(".show-data").append(html + "<p>" + response + "</p>");
-            // document.getElementById("jsonResultInfoFaceImg").textContent = JSON.stringify(response, undefined, 2);
+            document.getElementById("jsonResultInfoFaceImg").textContent = JSON.stringify(response, undefined, 2);
         });
     }
     
