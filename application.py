@@ -23,5 +23,7 @@ def index():
 def getImageInfoFromURL():
   data = request.form
   # results = fs.getFaceInfoFromURL()
-  return fs.getFaceInfoFromURL()
+  # return fs.getFaceInfoFromURL()
+  return jsonify({'output':'Full Name: ' + 'andreas dragoman'})
+  # return jsonify({'error' : 'Missing data!'})
 
