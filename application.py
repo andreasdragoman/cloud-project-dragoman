@@ -22,5 +22,5 @@ def getImageInfoFromURL():
   results = fs.getFaceInfoFromURL(data['imgUrl'])
   # resultTranslated = ts.getTranslatedText(results, data['targetLanguage'])
   # db.insertInFacesDetectedInfo(data['imgUrl'], results, resultTranslated)
-  db.insertInFacesDetectedInfo(data['imgUrl'], "res", "resTran")
+  # db.insertInFacesDetectedInfo(data['imgUrl'], "res", "resTran")
   return results
