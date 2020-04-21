@@ -4,7 +4,7 @@ def getTranslatedText(initial_text, target_language):
   subscription_key = '2a9eaaaee36b45c58c09b79d317e0b72'
   endpoint = 'https://cloud-project-translate-service.cognitiveservices.azure.com/sts/v1.0/issuetoken'
   path = '/translate?api-version=3.0'
-  params = '&to=' + target_language
+  params = '&to=it'
   constructed_url = endpoint + path + params
   
   headers = {
@@ -14,7 +14,7 @@ def getTranslatedText(initial_text, target_language):
   }
   
   body = [{
-      'text': initial_text
+      'text': 'hello'
   }]
   
   request = requests.post(constructed_url, headers=headers, json=body)
