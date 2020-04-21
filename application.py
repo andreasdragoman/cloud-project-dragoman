@@ -21,4 +21,7 @@ def index():
   
 @app.route('/getImageInfoFromURL', methods=['POST'])
 def getImageInfoFromURL():
+  data = request.form
+  results = fs.getFaceInfoFromURL()
+  # return fs.getFaceInfoFromURL()
   return "andrs drag"
