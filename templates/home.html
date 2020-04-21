@@ -60,9 +60,13 @@
             <input type="text" name="FaceDetection.Image.Url" placeholder="Image URL">
         </div>
         <div style="padding:10px;">
-            <input type="submit" class="btn green" style="width:150px;" value="Submit">
+            <button id="clicked" class="btn green" style="width:150px;" onclick="myFunction()">Submit</button>
         </div>
     </form>
+    
+    <div class="show-data" >
+        
+    </div>
     
 </main>
 
@@ -72,6 +76,24 @@
     
 <script>
     $('select').select2({ width: '170px', placeholder: "Select an Option", allowClear: true });
+    
+    function myFunction() {
+          //$.ajax({
+          //    url: "/getImageInfoFromURL",
+          //    type: "POST",
+          //    data: {}
+          //}).done(function(response) {
+          //      var html= "<br><br><br><p> <b> RESULT : <b><p>";
+                // response = response.result;
+                // $.each(response,function(key,val){
+                //      console.log(val);
+                //         html+="<p>"+val+"<p>"
+                //     });
+                //     html +="<br>";
+                $(".show-data").append(html);
+            //});
+    }
+    
 </script>
 
 </body>
