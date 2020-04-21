@@ -18,8 +18,8 @@ def createTables():
     return False
   else:
     cursor = conn.cursor()
-    cursor.execute("CREATE TABLE inventory (id serial PRIMARY KEY, name VARCHAR(50), quantity INTEGER);")
-    cursor.execute("CREATE TABLE FacesDetectedInfo (id serial PRIMARY KEY, url VARCHAR(50), response VARCHAR(50));")
+    cursor.execute("CREATE TABLE IF NOT EXISTS inventory (id serial PRIMARY KEY, name VARCHAR(50), quantity INTEGER);")
+    cursor.execute("CREATE TABLE IF NOT EXISTS FacesDetectedInfo (id serial PRIMARY KEY, url TEXT, response TEXT, responseTranslated TEXT);")
     conn.commit()
     cursor.close()
     conn.close()
@@ -87,7 +87,7 @@ def deleteInventoryItem(item_id):
     return True
   
   
-def insertInFacesDetectedInfo(item_url, item_result):
+def insertInFacesDetectedInfo(item_url, item_result, item_result_translated):
   global config
   try:
     conn = mysql.connector.connect(**config)
@@ -95,7 +95,7 @@ def insertInFacesDetectedInfo(item_url, item_result):
     return False
   else:
     cursor = conn.cursor()
-    cursor.execute("INSERT INTO FacesDetectedInfo (url, result) VALUES (%s, %s);", (item_url, item_result))
+    cursor.execute("INSERT INTO FacesDetectedInfo (url, result, resultTranslated) VALUES (%s, %s, %s);", (item_url, item_result, item_result_translated))
     conn.commit()
     cursor.close()
     conn.close()
