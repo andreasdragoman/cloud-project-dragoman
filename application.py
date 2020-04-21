@@ -1,3 +1,6 @@
+import database as db
+import faceservice as fs
+
 from flask import Flask, render_template, request, Response, jsonify
 app = Flask(__name__)
 
