@@ -36,7 +36,7 @@ def createTables():
   else:
     cursor = conn.cursor()
     cursor.execute("CREATE TABLE IF NOT EXISTS inventory (id serial PRIMARY KEY, name VARCHAR(50), quantity INTEGER);")
-    cursor.execute("CREATE TABLE IF NOT EXISTS FacesDetectedInfo (id serial PRIMARY KEY, url text, result text);")
+    # cursor.execute("CREATE TABLE IF NOT EXISTS FacesDetectedInfo (id serial PRIMARY KEY, url text, result text);")
     conn.commit()
     cursor.close()
     conn.close()
@@ -56,37 +56,6 @@ def insertItemInInventory(item_name, item_quantity):
     cursor.close()
     conn.close()
     return True
-  
-  
-def insertInFacesDetectedInfo(item_url, item_result):
-  global config
-  try:
-    conn = mysql.connector.connect(**config)
-  except mysql.connector.Error as err:
-    return False
-  else:
-    cursor = conn.cursor()
-    cursor.execute("INSERT INTO FacesDetectedInfo (url, result) VALUES (%s, %s);", (item_url, item_result))
-    conn.commit()
-    cursor.close()
-    conn.close()
-    return True
-  
-  
-def getFacesDetectedInfo():
-  global config 
-  try:
-    conn = mysql.connector.connect(**config)
-  except mysql.connector.Error as err:
-    return None
-  else:
-    cursor = conn.cursor()
-    cursor.execute("SELECT * FROM FacesDetectedInfo;")
-    rows = cursor.fetchall()
-    conn.commit()
-    cursor.close()
-    conn.close()
-    return rows
   
   
 def getInventory():
