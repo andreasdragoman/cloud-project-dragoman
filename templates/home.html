@@ -81,7 +81,7 @@
         var urlstr = $("input[name=UrlImage]").val();
         $.ajax({
             url: "/getImageInfoFromURL",
-            data:{imgUrl:urlstr}
+            data:{imgUrl:urlstr},
             type: "POST"
         }).done(function(response) {
             var html= "<br><p> <b> RESULT : <b><p>";
