@@ -1,5 +1,6 @@
 import database as db
 import faceservice as fs
+import translateservice as ts
 
 from flask import Flask, render_template, request, Response, jsonify
 app = Flask(__name__)
@@ -19,4 +20,6 @@ def index():
 def getImageInfoFromURL():
   data = request.form
   results = fs.getFaceInfoFromURL(data['imgUrl'])
+  resultTranslated = ts.getTranslatedText()
+  db.insertInFacesDetectedInfo(data['imgUrl'], results, resultTranslated)
   return results
