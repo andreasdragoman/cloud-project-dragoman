@@ -7,8 +7,8 @@ app = Flask(__name__)
 
 @app.route("/", methods=['GET', 'POST'])
 def index():
-  if request.method == 'GET':
-    return render_template("home.html")
+  # if request.method == 'GET':
+  return render_template("home.html")
   # if request.method == 'POST':
   #   data = request.form
   #   results = db.getInventory()
