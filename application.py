@@ -5,6 +5,11 @@ from flask import Flask, render_template, request, Response, jsonify
 app = Flask(__name__)
 
 
+@app.before_first_request
+def create_tables():
+    db.create_tables()
+
+
 @app.route("/", methods=['GET', 'POST'])
 def index():
   return render_template("home.html")
