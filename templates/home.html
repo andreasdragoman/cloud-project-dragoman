@@ -57,7 +57,7 @@
              </select>
         </div>
         <div style="width:900px;padding:10px;">
-            <input type="text" name="FaceDetection.Image.Url" placeholder="Image URL">
+            <input type="text" name="UrlImage" placeholder="Image URL">
         </div>
         <div style="padding:10px;">
             <button id="clicked" class="btn green" style="width:150px;" onclick="myFunction()">Submit</button>
@@ -78,20 +78,22 @@
     $('select').select2({ width: '170px', placeholder: "Select an Option", allowClear: true });
     
     function myFunction() {
-          $.ajax({
-              url: "/getImageInfoFromURL",
-              type: "POST"
-          }).done(function(response) {
-              var html= "<br><p> <b> RESULT : <b><p>";
-              // response = response.result;
-              // $.each(response,function(key,val){
-              //      console.log(val);
-              //         html+="<p>"+val+"<p>"
-              //     });
-              //     html +="<br>";
-              alert(response);
-              $(".show-data").append(html + "<p>" + response + "</p>");
-          });
+        var urlstr = $("input[name=UrlImage]").val();
+        $.ajax({
+            url: "/getImageInfoFromURL",
+            data:{imgUrl:urlstr}
+            type: "POST"
+        }).done(function(response) {
+            var html= "<br><p> <b> RESULT : <b><p>";
+            // response = response.result;
+            // $.each(response,function(key,val){
+            //      console.log(val);
+            //         html+="<p>"+val+"<p>"
+            //     });
+            //     html +="<br>";
+            alert(response);
+            $(".show-data").append(html + "<p>" + response + "</p>");
+        });
     }
     
 </script>
