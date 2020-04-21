@@ -94,7 +94,8 @@
             //     html +="<br>";
             //alert(response);
             //$(".show-data").append(html + "<p>" + response + "</p>");
-            document.getElementById("jsonResultInfoFaceImg").textContent = JSON.stringify(response, undefined, 2);
+            var responseJson = JSON.parse(response);
+            document.getElementById("jsonResultInfoFaceImg").textContent = JSON.stringify(responseJson, undefined, 2);
         });
     }
     
