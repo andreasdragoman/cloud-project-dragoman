@@ -4,7 +4,7 @@ def getTranslatedText(initial_text, target_language):
   subscription_key = '2a9eaaaee36b45c58c09b79d317e0b72'
   endpoint = 'https://api.cognitive.microsofttranslator.com'
   path = '/translate?api-version=3.0'
-  params = '&to=it'
+  params = '&to=' + target_language
   constructed_url = endpoint + path + params
   
   headers = {
@@ -14,7 +14,7 @@ def getTranslatedText(initial_text, target_language):
   }
   
   body = [{
-      'text': 'hello'
+      'text': initial_text
   }]
   
   request = requests.post(constructed_url, headers=headers, json=body)
