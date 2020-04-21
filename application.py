@@ -29,6 +29,6 @@ def getImageInfoFromURL():
   if data['imgUrl']
   data = request.form
   results = fs.getFaceInfoFromURL(data['imgUrl'])
-  db.insertInFacesDetectedInfo(str(data['imgUrl']), str(results))
+  # db.insertInFacesDetectedInfo(str(data['imgUrl']), str(results))
   # return fs.getFaceInfoFromURL()
   return results
