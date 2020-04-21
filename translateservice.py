@@ -2,7 +2,7 @@ import os, requests, uuid, json
 
 def getTranslatedText(initial_text, target_language):
   subscription_key = '2a9eaaaee36b45c58c09b79d317e0b72'
-  endpoint = 'https://cloud-project-translate-service.cognitiveservices.azure.com/sts/v1.0/issuetoken'
+  endpoint = 'https://api.cognitive.microsofttranslator.com'
   path = '/translate?api-version=3.0'
   params = '&to=it'
   constructed_url = endpoint + path + params
