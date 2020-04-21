@@ -19,7 +19,7 @@ def index():
   #   return render_template("home.html", imageFaceInfoResult=results)
   
   
-app.route('/getImageInfoFromURL', methods=['GET','POST'])
+@app.route('/getImageInfoFromURL', methods=['GET','POST'])
 def getImageInfoFromURL():
   data = request.form
   # results = fs.getFaceInfoFromURL()
