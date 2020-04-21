@@ -57,7 +57,7 @@
              </select>
         </div>
         <div style="width:900px;padding:10px;">
-            <input type="text" name="UrlImage" placeholder="Image URL">
+            <input type="text" name="FaceDetection.Image.Url" placeholder="Image URL">
         </div>
         <div style="padding:10px;">
             <button id="clicked" class="btn green" style="width:150px;" onclick="myFunction()">Submit</button>
@@ -78,10 +78,11 @@
     $('select').select2({ width: '170px', placeholder: "Select an Option", allowClear: true });
     
     function myFunction() {
-        var urlstr = $("input[name=UrlImage]").val();
+        var urlstr = $("input[name=FaceDetection.Image.Url]").val();
+        var target_language = document.getElementById('target-language-picker').value;
         $.ajax({
             url: "/getImageInfoFromURL",
-            data:{imgUrl:urlstr},
+            data:{imgUrl:urlstr, targetLanguage:target_language},
             type: "POST"
         }).done(function(response) {
             var html= "<br><p> <b> RESULT : <b><p>";
