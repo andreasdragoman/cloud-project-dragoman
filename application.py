@@ -24,4 +24,4 @@ def getImageInfoFromURL():
   data = request.form
   results = fs.getFaceInfoFromURL()
   # return fs.getFaceInfoFromURL()
-  return "andrs drag"
+  return results
