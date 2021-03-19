@@ -5,5 +5,5 @@ MarkupSafe==1.0
 Werkzeug==0.14.1
 PyMySQL==0.9.3
 mysql-connector-python==8.0.19
-Pillow==7.1.1
+Pillow==8.1.1
 azure-cognitiveservices-vision-face==0.4.0
